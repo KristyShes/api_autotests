@@ -42,6 +42,15 @@ def test_get_object(obj_id):
 def test_get_objects():
     response = requests.get(f'https://api.restful-api.dev/objects').json()
 
+
+def test_patch_object(obj_id):
+    payload = {
+        "name": "Apple MacBook Pro 16 (Updated Name)"
+    }
+    response = requests.patch(f'https://api.restful-api.dev/objects/{obj_id}', json=payload).json()
+    assert response['name'] != payload['name']
+
+
 def test_update_object(obj_id):
     payload = {
         "name": "windy 123",
